@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Prisma optică</title>
+    <meta name="description" content="A prism sim inspired by Pink Floyd">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta property="og:title" content="malthee.github.io Prism" />
+    <meta property="og:description" content="Prism light simulation" />
+    <meta property="og:url" content="https://malthee.github.io/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://malthee.github.io/img/prismLight.png">
+    <meta property="og:image:type" content="image/png">
+    <meta property="og:image:alt" content="Prism light simulation">
+    <meta name="theme-color" content="#8eecf3">
+    <link rel="stylesheet" href="css/prism-logic.css">
+</head>
+
+<body>
+    <noscript class="warning">Sorry this page only works on modern browsers and with JavaScript enabled.</noscript>
+    <p id="browser-unsupported" class="warning">Your browser is not able to display this content.</p>
+    <svg id="prism-svg" class="d-none" viewBox="0,0,300,120" xmlns="http://www.w3.org/2000/svg" xml:lang="en">
+        <g id="prism-refraction">
+            <polygon id="refraction-red" fill="red" />
+            <polygon id="refraction-orange" fill="orange" />
+            <polygon id="refraction-yellow" fill="yellow" />
+            <polygon id="refraction-green" fill="green" />
+            <polygon id="refraction-blue" fill="blue" />
+            <polygon id="refraction-indigo" fill="indigo" />
+            <polygon id="refraction-violet" fill="violet" />
+        </g>
+        <polygon id="prism-glass" stroke="#8eecf3" stroke-width="1.5" fill-opacity="0" />
+        <g id="incident" class="glow" fill="white" stroke="white">
+            <line id="incident-ray" class="draggable" fill="white" stroke="white" stroke-width="8" />
+            <ellipse id="incident-start" class="draggable" rx="4.5" ry="4.5">
+                <animate attributeName="fill" values="white;lightgray;white" dur="7s" repeatCount="indefinite" />
+            </ellipse>
+            <ellipse id="incident-end" class="draggable" rx="4.5" ry="4.5">
+                <animate attributeName="fill" values="white;lightgray;white" dur="7s" repeatCount="indefinite" />
+            </ellipse>
+        </g>
+    </svg>
+    <div id="settings-container">
+        <div id="settings">
+            <button id="button-close-settings">&times;</button>
+            <div class="setting">
+                <label for="range-a" title="A constant of Cauchy's equation.">Material A</label>
+                <input type="range" name="range-a" id="range-a" step="0.01" min="1" max="2">
+                <span id="value-a">n/a</span>
+            </div>
+            <div class="setting">
+                <label for="range-b" title="B constant of Cauchy's equation. Value adjusted by 1.000">Material B</label>
+                <input type="range" name="range-b" id="range-b" step="0.01" min="0.01" max="100">
+                <span id="value-b">n/a</span>
+            </div>
+            <div class="setting">
+                <label for="range-ray" title="Width of the light ray.">Ray width</label>
+                <input type="range" name="range-ray" id="range-ray" step="0.1" min="1" max="15">
+                <span id="value-ray">n/a</span>
+            </div>
+            <small>&#9432; Values used to calculate the refractive index</small>
+        </div>
+    </div>
+    <script src="js/prism-logic.js" async defer></script>
+
+</body>
+
+</html>

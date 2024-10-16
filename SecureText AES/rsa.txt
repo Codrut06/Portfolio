@@ -1,0 +1,122 @@
+# RSA (Rivest-Shamir-Adleman): Oferă un nivel de securitate bun,
+# dar trebuie utilizat cu chei suficient de lungi (2048 biți sau mai mult)
+# pentru a fi considerat sigur.
+
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives.asymmetric import rsa, padding
+from cryptography.hazmat.primitives import hashes
+from tkinter import *
+from tkinter import messagebox
+
+
+class RSACryptographyApp:
+    def __init__(self, master):
+        self.master = master
+        self.master.geometry("400x620")
+        self.master.title("RSA Encryption & Decryption")
+
+        # Generare chei RSA
+        self.private_key, self.public_key = self.generate_keys()
+
+        self.ciphertext = None
+
+        self.create_widgets()
+
+    def generate_keys(self):
+        private_key = rsa.generate_private_key(
+            public_exponent=65537,
+            key_size=2048,
+            backend=default_backend()
+        )
+        public_key = private_key.public_key()
+        return private_key, public_key
+
+    def rsa_encrypt(self, public_key, message):
+        ciphertext = public_key.encrypt(
+            message.encode(),
+            padding.OAEP(
+                mgf=padding.MGF1(algorithm=hashes.SHA256()),
+                algorithm=hashes.SHA256(),
+                label=None
+            )
+        )
+        return ciphertext
+
+    def rsa_decrypt(self, private_key, ciphertext):
+        plaintext = private_key.decrypt(
+            ciphertext,
+            padding.OAEP(
+                mgf=padding.MGF1(algorithm=hashes.SHA256()),
+                algorithm=hashes.SHA256(),
+                label=None
+            )
+        )
+        return plaintext.decode()
+
+    def encrypt_message(self):
+        message = self.text_input.get(1.0, END).strip()
+        if not message:
+            messagebox.showwarning("Warning", "Please enter a message to encrypt!")
+            return
+        self.ciphertext = self.rsa_encrypt(self.public_key, message)
+        self.text_encrypted.delete(1.0, END)
+        self.text_encrypted.insert(END, self.ciphertext.hex())
+
+    def decrypt_message(self):
+        encrypted_message = self.text_decrypt_input.get(1.0, END).strip()
+        if not encrypted_message:
+            messagebox.showwarning("Warning", "Please enter a message to decrypt!")
+            return
+        try:
+            decrypted_message = self.rsa_decrypt(self.private_key, bytes.fromhex(encrypted_message))
+            self.text_decrypted.delete(1.0, END)
+            self.text_decrypted.insert(END, decrypted_message)
+        except Exception as e:
+            messagebox.showerror("Error", f"Decryption failed: {e}")
+
+    def reset(self):
+        self.text_input.delete(1.0, END)
+        self.text_encrypted.delete(1.0, END)
+        self.text_decrypted.delete(1.0, END)
+        self.text_decrypt_input.delete(1.0, END)
+
+    def exit_program(self):
+        self.master.destroy()
+
+    def create_widgets(self):
+        Label(text="Enter string here:", fg="black", font=("ARIAL", 12)).place(x=10, y=10)
+
+        # Input message field
+        self.text_input = Text(font="Robote 20", bg="white", relief=GROOVE, wrap=WORD, bd=0)
+        self.text_input.place(x=10, y=40, width=380, height=100)
+
+        # Encrypted message field
+        Label(text="Encrypted message (hex):", fg="black", font=("ARIAL", 12)).place(x=10, y=150)
+        self.text_encrypted = Text(font="Robote 20", bg="lightgray", relief=GROOVE, wrap=WORD, bd=0)
+        self.text_encrypted.place(x=10, y=180, width=380, height=80)
+
+        # Input for decryption
+        Label(text="Enter encrypted message to decrypt (hex):", fg="black", font=("ARIAL", 12)).place(x=10, y=270)
+        self.text_decrypt_input = Text(font="Robote 20", bg="white", relief=GROOVE, wrap=WORD, bd=0)
+        self.text_decrypt_input.place(x=10, y=300, width=380, height=100)
+
+        # Decrypted message field
+        Label(text="Decrypted message:", fg="black", font=("ARIAL", 12)).place(x=10, y=410)
+        self.text_decrypted = Text(font="Robote 20", bg="lightgray", relief=GROOVE, wrap=WORD, bd=0)
+        self.text_decrypted.place(x=10, y=440, width=380, height=80)
+
+        # Buttons
+        Button(text="ENCRYPT", height="2", width="18", bg="#ed3833", fg="white", bd=0,
+               command=self.encrypt_message).place(x=10, y=530)
+        Button(text="DECRYPT", height="2", width="18", bg="#00bd56", fg="white", bd=0,
+               command=self.decrypt_message).place(x=200, y=530)
+        Button(text="RESET", height="2", width="18", bg="#1089ff", fg="white", bd=0,
+               command=self.reset).place(x=10, y=570)
+        Button(text="EXIT", height="2", width="18", bg="#ff5733", fg="white", bd=0,
+               command=self.exit_program).place(x=200, y=570)
+
+
+if __name__ == "__main__":
+    root = Tk()
+    app = RSACryptographyApp(root)
+    root.mainloop()

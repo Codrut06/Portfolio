@@ -1,0 +1,135 @@
+from cryptography.hazmat.backends import default_backend
+from cryptography.hazmat.primitives.ciphers import Cipher, algorithms, modes
+from cryptography.hazmat.primitives import padding
+import os
+import base64
+from tkinter import *
+from tkinter import messagebox, ttk
+
+
+class AESEncryptionApp:
+    def __init__(self, master):
+        self.master = master
+        self.master.title("AES Encryption & Decryption")
+        self.master.geometry("500x600")
+
+        # Tab Control
+        self.tabControl = ttk.Notebook(master)
+
+        # Criptare Tab
+        self.encrypt_tab = Frame(self.tabControl)
+        self.tabControl.add(self.encrypt_tab, text='Encrypt')
+        self.create_encrypt_widgets()
+
+        # Decriptare Tab
+        self.decrypt_tab = Frame(self.tabControl)
+        self.tabControl.add(self.decrypt_tab, text='Decrypt')
+        self.create_decrypt_widgets()
+
+        self.tabControl.pack(expand=1, fill="both")
+
+        # Gestionarea cheilor
+        self.key = os.urandom(32)  # Generare cheie AES-256 (32 bytes = 256 bits)
+
+    @staticmethod
+    def aes_encrypt(key, plaintext, mode):
+        padder = padding.PKCS7(algorithms.AES.block_size).padder()
+        padded_data = padder.update(plaintext.encode()) + padder.finalize()
+        iv = os.urandom(16)
+
+        if mode == "CBC":
+            cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend())
+        elif mode == "GCM":
+            cipher = Cipher(algorithms.AES(key), modes.GCM(iv), backend=default_backend())
+        else:
+            raise ValueError("Unsupported mode selected.")
+
+        encryptor = cipher.encryptor()
+        ciphertext = iv + encryptor.update(padded_data) + encryptor.finalize()
+        return base64.b64encode(ciphertext).decode()
+
+    @staticmethod
+    def aes_decrypt(key, ciphertext, mode):
+        ciphertext = base64.b64decode(ciphertext)
+        iv = ciphertext[:16]
+        actual_ciphertext = ciphertext[16:]
+
+        if mode == "CBC":
+            cipher = Cipher(algorithms.AES(key), modes.CBC(iv), backend=default_backend())
+        elif mode == "GCM":
+            cipher = Cipher(algorithms.AES(key), modes.GCM(iv), backend=default_backend())
+        else:
+            raise ValueError("Unsupported mode selected.")
+
+        decryptor = cipher.decryptor()
+        padded_plaintext = decryptor.update(actual_ciphertext) + decryptor.finalize()
+
+        unpadder = padding.PKCS7(algorithms.AES.block_size).unpadder()
+        plaintext = unpadder.update(padded_plaintext) + unpadder.finalize()
+        return plaintext.decode()
+
+    def create_encrypt_widgets(self):
+        Label(self.encrypt_tab, text="Enter string to encrypt:", font=("ARIAL", 12)).pack(pady=10)
+
+        self.text_input = Text(self.encrypt_tab, font="Roboto 12", bg="white", wrap=WORD, height=5)
+        self.text_input.pack(pady=10)
+
+        Label(self.encrypt_tab, text="Select mode:", font=("ARIAL", 12)).pack(pady=10)
+        self.mode_var = StringVar(value="CBC")
+        mode_menu = OptionMenu(self.encrypt_tab, self.mode_var, "CBC", "GCM")
+        mode_menu.pack(pady=5)
+
+        Button(self.encrypt_tab, text="ENCRYPT", command=self.encrypt_message).pack(pady=10)
+        Label(self.encrypt_tab, text="Encrypted message (base64):", font=("ARIAL", 12)).pack(pady=10)
+
+        self.text_encrypted = Text(self.encrypt_tab, font="Roboto 12", bg="lightgray", wrap=WORD, height=5)
+        self.text_encrypted.pack(pady=10)
+
+    def create_decrypt_widgets(self):
+        Label(self.decrypt_tab, text="Enter encrypted message to decrypt (base64):", font=("ARIAL", 12)).pack(pady=10)
+
+        self.text_decrypt_input = Text(self.decrypt_tab, font="Roboto 12", bg="white", wrap=WORD, height=5)
+        self.text_decrypt_input.pack(pady=10)
+
+        Label(self.decrypt_tab, text="Select mode:", font=("ARIAL", 12)).pack(pady=10)
+        self.mode_var_decrypt = StringVar(value="CBC")
+        mode_menu_decrypt = OptionMenu(self.decrypt_tab, self.mode_var_decrypt, "CBC", "GCM")
+        mode_menu_decrypt.pack(pady=5)
+
+        Button(self.decrypt_tab, text="DECRYPT", command=self.decrypt_message).pack(pady=10)
+        Label(self.decrypt_tab, text="Decrypted message:", font=("ARIAL", 12)).pack(pady=10)
+
+        self.text_decrypted = Text(self.decrypt_tab, font="Roboto 12", bg="lightgray", wrap=WORD, height=5)
+        self.text_decrypted.pack(pady=10)
+
+    def encrypt_message(self):
+        message = self.text_input.get(1.0, END).strip()
+        if not message:
+            messagebox.showwarning("Warning", "Please enter a message to encrypt!")
+            return
+        mode = self.mode_var.get()
+        try:
+            ciphertext = self.aes_encrypt(self.key, message, mode)
+            self.text_encrypted.delete(1.0, END)
+            self.text_encrypted.insert(END, ciphertext)
+        except Exception as e:
+            messagebox.showerror("Error", f"Encryption failed: {e}")
+
+    def decrypt_message(self):
+        encrypted_message = self.text_decrypt_input.get(1.0, END).strip()
+        if not encrypted_message:
+            messagebox.showwarning("Warning", "Please enter a message to decrypt!")
+            return
+        mode = self.mode_var_decrypt.get()
+        try:
+            decrypted_message = self.aes_decrypt(self.key, encrypted_message, mode)
+            self.text_decrypted.delete(1.0, END)
+            self.text_decrypted.insert(END, decrypted_message)
+        except Exception as e:
+            messagebox.showerror("Error", f"Decryption failed: {e}")
+
+
+if __name__ == "__main__":
+    root = Tk()
+    app = AESEncryptionApp(root)
+    root.mainloop()

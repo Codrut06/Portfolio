@@ -1,0 +1,75 @@
+# Metoda utilizată pentru criptare și decriptare în acest cod este Fernet, din biblioteca cryptography.
+# Fernet este un sistem de criptare simetrică, care folosește aceeași cheie atât pentru criptarea cât și pentru decriptarea datelor.
+# cipher.encrypt() este metoda folosită pentru criptarea unui mesaj.
+# cipher.decrypt() este metoda folosită pentru decriptarea unui mesaj criptat.
+# Aceste metode fac parte din clasa Fernet, care implementează criptarea folosind AES (Advanced Encryption Standard)
+# în mod CBC (Cipher Block Chaining) cu o cheie de 128 biți, împreună cu HMAC pentru a asigura integritatea mesajului.
+
+from tkinter import *
+from tkinter import messagebox
+from cryptography.fernet import Fernet
+
+# Generăm o cheie pentru criptare și decriptare
+key = Fernet.generate_key()
+cipher = Fernet(key)
+
+def decrypt():
+    screen2 = Toplevel(screen)
+    screen2.title("DECRYPTION")
+    screen2.geometry("400x200")
+    screen2.configure(bg="#00bd56")
+
+    # Obține mesajul criptat și îl decriptează
+    encrypted_message = text1.get(1.0, END).strip()
+    try:
+        decrypted_message = cipher.decrypt(encrypted_message.encode()).decode()
+        Label(screen2, text="DECRYPT", font="arial", fg="white", bg="#00bd56").place(x=10, y=0)
+        text2 = Text(screen2, font="Robote 10", bg="white", relief=GROOVE, wrap=WORD, bd=0)
+        text2.place(x=10, y=40, width=380, height=150)
+        text2.insert(END, decrypted_message)
+    except:
+        messagebox.showerror("Error", "Invalid encrypted message!")
+
+def encrypt():
+    screen1 = Toplevel(screen)
+    screen1.title("ENCRYPTION")
+    screen1.geometry("400x200")
+    screen1.configure(bg="#ed3833")
+
+    # Obține mesajul și îl criptează
+    message = text1.get(1.0, END).strip()
+    encrypted_message = cipher.encrypt(message.encode()).decode()
+
+    Label(screen1, text="ENCRYPT", font="arial", fg="white", bg="#ed3833").place(x=10, y=0)
+    text2 = Text(screen1, font="Robote 10", bg="white", relief=GROOVE, wrap=WORD, bd=0)
+    text2.place(x=10, y=40, width=380, height=150)
+    text2.insert(END, encrypted_message)
+
+def exit_program():
+    screen.destroy()
+
+def main_screen():
+    global screen
+    global text1
+
+    screen = Tk()
+    screen.geometry("375x320")
+    screen.title("Encrypt & Decrypt a String Program")
+
+    def reset():
+        text1.delete(1.0, END)
+
+    Label(text="Enter string here", fg="black", font=("ARIAL", 12)).place(x=10, y=10)
+    text1 = Text(font="Robote 20", bg="white", relief=GROOVE, wrap=WORD, bd=0)
+    text1.place(x=10, y=50, width=355, height=100)
+
+    Button(text="ENCRYPT", height="2", width="23", bg="#ed3833", fg="white", bd=0, command=encrypt).place(x=10, y=200)
+    Button(text="DECRYPT", height="2", width=23, bg="#00bd56", fg="white", bd=0, command=decrypt).place(x=200, y=200)
+
+    # Butoanele RESET și EXIT pe aceeași linie
+    Button(text="RESET", height="2", width="23", bg="#1089ff", fg="white", bd=0, command=reset).place(x=10, y=250)
+    Button(text="EXIT", height="2", width="23", bg="#ff5733", fg="white", bd=0, command=exit_program).place(x=195, y=250)
+
+    screen.mainloop()
+
+main_screen()

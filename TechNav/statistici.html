@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/statistici.css" rel="stylesheet">
+    <title>TechNav</title>
+</head>
+<body>
+
+    <h1 class="title">TechNav</h1>
+
+    <div class="container">
+        <div class="grid-item left-panel">
+            <a href="main.html"><button class="depth" type="button"><span>HOME</span></button></a>
+            <a href="docs/ManualUtilizareTechNav.pdf" target="_blank"><button class="depth" id="vertical-text" type="button"><span>USER</span><span>MANUAL</span></button></a>
+        </div>
+
+        <div class="grid-item">
+            <div class="performance-indicators">
+                <h2>Performance Indicators</h2>
+                <div class="grid-container">
+                    <section>
+                        <h3 class="tooltip">Mean Time to Repair (MTTR) <span class="tooltiptext">A performance indicator
+                        that measures the average time required to fix a fault in equipment or a system,
+                        thus evaluating the efficiency of the repair process.</span></h3>
+                        <!-- MTTR chart -->
+                        <canvas id="repairTimeChart"></canvas>
+                    </section>
+                    <section>
+                        <h3 class="tooltip">Work Efficiency <span class="tooltiptext">This indicator measures the efficiency
+                        of work in ship repairs, expressing the ratio between tasks and the time/effort allocated.</span></h3>
+                        <!-- Work Efficiency chart -->
+                        <canvas id="workEfficiencyChart"></canvas>
+                    </section>
+                    <section>
+                        <h3 class="tooltip">Labour Productivity <span class="tooltiptext">This indicator measures the efficiency
+                        of machinery usage in ship repairs, reporting the volume of work done against the number of
+                        hours allocated.</span></h3>
+                        <!-- Labour Productivity chart -->
+                        <canvas id="labourProductivityChart"></canvas>
+                    </section>
+                    <section>
+                        <h3 class="tooltip">Delivery On Time Rate <span class="tooltiptext">This indicator evaluates the efficiency
+                        of machinery usage in ship repairs, calculated as the ratio between work volume and allocated hours.</span></h3>
+                        <!-- Delivery On Time Rate chart -->
+                        <canvas id="deliveryOnTimeRateChart"></canvas>
+                    </section>
+                    <section>
+                        <h3 class="tooltip">Capacity Utilization <span class="tooltiptext">This indicator evaluates the percentage
+                        of time that resources are utilized during ship repairs, useful for assessing the efficiency of
+                        docks or other facilities. A high rate indicates effective planning and management of the work.</span></h3>
+                        <!-- Utilization Rate chart -->
+                        <canvas id="utilizationRateChart"></canvas>
+                    </section>
+                    <section>
+                        <h3 class="tooltip">Repeat Repairs <span class="tooltiptext">This indicator evaluates the frequency
+                        of the same fault or category of faults reappearing after a repair. A high rate may indicate issues
+                        with the quality of work or diagnostic processes.</span></h3>
+                        <!-- Repeat Repair Rate chart -->
+                        <canvas id="repeatRepairRateChart"></canvas>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/statistici.js"></script>
+
+</body>
+</html>

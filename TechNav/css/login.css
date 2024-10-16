@@ -1,0 +1,244 @@
+/* General HTML styles */
+html {
+    -webkit-tap-highlight-color: hsla(0, 0, 0, 0);
+    height: 100%;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+/* Inherit box-sizing property for all elements and pseudo-elements */
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+/* Body styles */
+body {
+    background-image: linear-gradient(45deg, #0d0d0d 25%, #333333 25%, #333333 50%, #0d0d0d 50%);
+    background-size: 2px 2px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    width: 100%;
+}
+
+/* Title styling */
+.title {
+    color: #444;
+    text-align: center;
+    margin-top: 10px;
+    font-size: 100px;
+    font-family: 'Roboto', sans-serif;
+    line-height: 1;
+    text-shadow: 0 1px 1px hsla(0, 0%, 100%, .4),
+        0 -1px 1px hsla(0, 0%, 0%, .8);
+    position: relative;
+    max-width: 90vw;
+    overflow-wrap: break-word;
+}
+
+/* Subtitle underline effect */
+.title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -5px;
+    height: 2px;
+    background: linear-gradient(to right, transparent, #00ff00, transparent);
+}
+
+/* Container styles */
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 0 auto;
+}
+
+/* Login box styles */
+.login-box {
+    background: linear-gradient(to bottom, #404040, #202020), linear-gradient(to bottom, #aaa, #888);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    border-radius: 20px;
+    padding: 20px;
+    position: relative;
+    box-shadow: inset 0 0 2px 2px hsla(0, 0%, 0%, .2), inset 0 0 4px 4px hsla(0, 0%, 0%, .2),
+        inset 0 0 6px 6px hsla(0, 0%, 0%, .2), inset 0 0 8px 8px hsla(0, 0%, 0%, .5),
+        inset 0 -4px 4px 4px hsla(0, 0%, 0%, .5), inset 0 1px 1px 8px hsla(0, 0%, 100%, .25),
+        inset 0 -30px 30px hsla(0, 0%, 0%, .2), 0 -4px 8px 4px hsla(0, 0%, 0%, .5),
+        0 10px 10px hsla(0, 0%, 0%, .25), 0 0 2px 2px hsla(0, 0%, 0%, .2);
+    transition: all 0.3s ease;
+    max-width: 90vw;
+    margin: 5px;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    color: #dcdcdc;
+}
+
+/* Input box styling */
+.input-box {
+    margin-bottom: 20px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px 15px;
+}
+
+.input-box label {
+    color: #fff;
+    display: block;
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.input-wrapper .icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    color: #888;
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 10px 15px 10px 35px;
+    border: none;
+    border-radius: 5px;
+    background: #2c2c2c;
+    color: #fff;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+/* Button styles */
+button {
+    background: #444;
+    border: none;
+    border-radius: 20px;
+    box-shadow: inset 0 0 2px 2px hsla(0, 0%, 0%, .2),
+        inset 0 0 2px 4px hsla(0, 0%, 0%, .2),
+        inset 0 0 2px 6px hsla(0, 0%, 0%, .2),
+        inset 0 0 1px 8px hsla(0, 0%, 0%, .5);
+    color: #303030;
+    cursor: pointer;
+    font: bold 20px/1.2 'Roboto', sans-serif;
+    height: 50px;
+    width: 70%;
+    margin: 5px auto;
+    display: block;
+    transition: all 0.3s ease;
+    padding: 15px 20px;
+}
+
+button:hover,
+button:focus {
+    color: #0ab;
+    text-shadow: 0 0 20px hsla(240, 75%, 75%, .5);
+}
+
+button:active {
+    background: #666;
+    box-shadow: inset 0 0 2px 2px hsla(0, 0%, 0%, .2),
+        inset 0 -12px 24px -4px hsla(0, 0%, 0%, .5);
+}
+
+/* Remember and forget section */
+.remember-forget {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.remember-forget a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+    margin-left:20px;
+    margin-right: 20px;
+}
+
+.remember-forget a:hover {
+    text-decoration: underline;
+}
+
+/* Registration link styles */
+.register-link {
+    margin-top: 20px;
+    text-align: inherit;
+}
+
+.register-link p {
+    color: #fff;
+    margin-bottom: 5px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+}
+
+.register-link a {
+    color: #00ff00;
+    text-decoration: none;
+    display: block;
+    margin-top: 10px;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+    color: #00bfff;
+}
+
+/* Media Queries for responsive design */
+@media (max-width: 768px) {
+    .title {
+        font-size: 80px;
+    }
+
+    .login-box {
+        width: 80%;
+    }
+
+    button {
+        height: 80px;
+        width: 150px;
+        font-size: 16px;
+        margin: 10px auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 40px;
+    }
+
+    .login-box {
+        width: 90%;
+    }
+
+    button {
+        height: 60px;
+        width: 120px;
+        font-size: 12px;
+        margin: 5px auto;
+    }
+}

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/login.css">
+    <title>TechNav</title>
+
+    <script>
+        // Funcție pentru a preveni trimiterea formularului înainte de redirecționare
+        function redirectToMain(event) {
+            event.preventDefault(); // Previne trimiterea formularului înainte de redirecționare
+
+            // Aici ar trebui să faci validarea loginului cu AJAX sau să aștepți răspunsul serverului
+            // În acest exemplu simplu, presupunem că login-ul este întotdeauna corect și redirecționăm imediat
+            window.location.href = "main.html";  // Redirecționează la main.html
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <header>
+        <h1 class="title">TechNav</h1>
+    </header>
+
+    <main>
+        <div class="container">
+            <div class="login-box">
+                <!-- Aici am adăugat onsubmit="redirectToMain(event)" -->
+                <form action="/login" method="post" onsubmit="redirectToMain(event)">
+                    <h2>Login</h2>
+
+                    <div class="input-box">
+                        <label>Email</label>
+                        <div class="input-wrapper">
+                            <span class="icon"><ion-icon name="mail-outline"></ion-icon></span>
+                            <input type="email" name="email" required>
+                        </div>
+                    </div>
+
+                    <div class="input-box">
+                        <label>Password</label>
+                        <div class="input-wrapper">
+                            <span class="icon"><ion-icon name="lock-closed-outline"></ion-icon></span>
+                            <input type="password" name="password" required>
+                        </div>
+                    </div>
+
+                    <button type="submit">Login</button>
+                    <div class="remember-forget">
+                        <label><input type="checkbox">Remember me</label>
+                        <a href="#">Forgot Password?</a>
+                    </div>
+                    <div class="register-link">
+                        <p>Don't have an account? <a href="#">Register</a></p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

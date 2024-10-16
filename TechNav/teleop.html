@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="css/teleop.css" rel="stylesheet">
+    <title>TechNav</title>
+</head>
+
+<body>
+
+    <h1 class="title">TechNav</h1>
+
+    <div class="container">
+        <!-- Textarea for joystick data -->
+        <textarea class="joystick-data" type="text" placeholder="Date joystick" rows="5"></textarea>
+
+        <!-- Left Panel -->
+        <div class="grid-item left-panel">
+            <button class="depth" id="vertical-text" type="button"><span>START</span></button>
+            <a href="main.html"><button class="depth" type="button"><span>HOME</span></button></a>
+        </div>
+
+        <!-- Table Panel -->
+        <div class="grid-item table-panel">
+            <table>
+                <thead>
+                    <tr>
+                        <th class="depth">ITEMS</th>
+                        <th class="depth">OPERATION DESCRIPTION</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="depth">MOTOR1</td>
+                        <td>Desc1</td>
+                    </tr>
+                    <tr>
+                        <td class="depth">MOTOR2</td>
+                        <td>Desc2</td>
+                    </tr>
+                    <tr>
+                        <td class="depth">DESTINATION1</td>
+                        <td>Desc3</td>
+                    </tr>
+                    <tr>
+                        <td class="depth">DESTINATION2</td>
+                        <td>Desc4</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Right Panel -->
+        <div class="grid-item right-panel">
+            <div class="video-container">
+                <video controls autoplay muted>
+                    <source src="videos/Floating Dock Operation - BEBEK-E.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </div>
+
+<script src="js/teleop.js"></script>
+
+</body>
+
+</html>

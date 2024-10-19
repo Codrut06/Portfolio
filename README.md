@@ -25,4 +25,7 @@ A security-focused app that uses AES (Advanced Encryption Standard) to encrypt a
 TechNav:
 An industrial robot control and monitoring system. TechNav allows real-time tracking and control of robotic movements, optimizing workflow and ensuring precision in industrial tasks.
 
+Solar System Explorer:
+Solar System Explorer allows users to explore the planets and other celestial bodies within our solar system. Through an intuitive interface and interactive features, users can view detailed information, compare planetary characteristics, and discover important historical and scientific data about each planet and associated space missions.
+
 This portfolio highlights my ability to work across a wide range of fields, from game development to robotics and AI-driven applications.

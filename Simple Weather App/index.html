@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+<section class="wrapper">
+    <section class="clock">
+        <figure class="flipper">
+            <span class="hours">01</span>
+        </figure>
+        <figure class="flipper">
+            <span class="minutes">17</span>
+        </figure>
+        <figure class="flipper">
+            <span class="seconds">45</span>
+        </figure>
+    </section>
+
+    <section class="toggles">
+        <figure class="toggle on" id="sun-toggle" data-weather="sunny">
+            <i class="fas fa-sun icon"></i>
+        </figure>
+        <figure class="toggle" id="moon-toggle" data-weather="moon">
+            <i class="fas fa-moon icon"></i>
+        </figure>
+        <figure class="toggle" id="wind-toggle" data-weather="wind">
+            <i class="fas fa-wind icon"></i>
+        </figure>
+        <figure class="toggle" id="rain-toggle" data-weather="rain">
+            <i class="fas fa-cloud-rain icon"></i>
+        </figure>
+    </section>
+
+    <section class="graph">
+        <input type="text" id="location-input" placeholder="Enter location" />
+        <button id="search-btn" class="button-theme">Search</button>
+        <div class="days" id="weather-data">
+            <span class="day" data-degrees="20">
+                <span class="day-label">Mon</span>
+            </span>
+            <span class="day" data-degrees="22">
+                <span class="day-label">Tue</span>
+            </span>
+            <span class="day" data-degrees="24">
+                <span class="day-label">Wed</span>
+            </span>
+            <span class="day" data-degrees="21">
+                <span class="day-label">Thu</span>
+            </span>
+            <span class="day" data-degrees="23">
+                <span class="day-label">Fri</span>
+            </span>
+        </div>
+    </section>
+
+    <div id="weather-info"></div>
+
+    <div class="suggestions" id="suggestions-panel">
+        <!-- Section Sunny -->
+        <div class="suggestion sunny">
+            <h2>Outdoor Activities in <span id="location-sunny"></span></h2>
+            <div class="sunny-info">
+                <h3>Top Recommended Spots</h3>
+                <ul id="recommended-spots">
+                    <!-- Places will be loaded dynamically from API -->
+                    <li><a href="#" id="spot1-name" target="_blank">Park Name or Trail</a> - <span id="spot1-distance"></span>
+                        km away</li>
+                    <li><a href="#" id="spot2-name" target="_blank">Botanical Garden</a> - <span id="spot2-distance"></span> km
+                        away</li>
+                    <li><a href="#" id="spot3-name" target="_blank">Lake</a> - <span id="spot3-distance"></span> km away</li>
+                </ul>
+
+                <h3>Activity Recommendations</h3>
+                <ul id="activity-recommendations">
+                    <!-- Recommended activities for users, based on the places found -->
+                    <li>Hiking trails - Enjoy the natural scenery and fresh air.</li>
+                    <li>Picnic spots - Perfect for a relaxing day outside.</li>
+                    <li>Photography - Capture the beauty of nature.</li>
+                </ul>
+
+                <p>To check availability and more details, please visit the linked sites for each activity.</p>
+            </div>
+        </div>
+
+        <!-- Section Moon -->
+        <div class="suggestion moon">
+            <h2>Astronomy &amp; Moon Phases in <span id="location-moon"></span></h2>
+            <div class="moon-info">
+                <p>Current Moon Phase: <span id="moon-phase"></span></p>
+                <img id="moon-phase-img" src="/moon.jpg" alt="Moon phase image" width="200" height="200">
+                <h3>Night Sky Highlights</h3>
+                <ul id="sky-objects">
+                    <li>Visible Planets: Venus, Jupiter</li>
+                    <li>Star Clusters: Orion, Pleiades</li>
+                    <li>Shooting Stars: Occasional meteor showers</li>
+                </ul>
+                <p>Tips: Best time for stargazing is after sunset.</p>
+            </div>
+        </div>
+
+        <!-- Section Wind -->
+        <div class="suggestion wind">
+            <h2>Wind &amp; Outdoor Sports in <span id="location-wind"></span></h2>
+            <div class="wind-info">
+                <p>Wind Speed: <span id="wind-speed"></span> m/s</p>
+                <p>Wind Direction: <span id="wind-direction"></span>°</p>
+                <h3>Recommended Sports</h3>
+                <ul id="activities-wind">
+                    <li>Kitesurfing</li>
+                    <li>Paragliding</li>
+                    <li>Windsurfing</li>
+                </ul>
+                <p>Tips: Ensure to check local wind conditions before planning.</p>
+            </div>
+        </div>
+
+        <!-- Section Rain -->
+        <div class="suggestion rain">
+            <h2>Indoor Refuge Options in <span id="location-rain"></span></h2>
+            <div class="rain-info">
+                <p>Current Weather: <span id="weather-rain"></span></p>
+                <p>Rain Intensity: <span id="rain-intensity"></span> mm/h</p>
+                <h3>Nearby Indoor Places</h3>
+                <ul id="indoor-locations">
+                    <li>Café Au Lait</li>
+                    <li>Library Corner</li>
+                    <li>Entertainment Hub</li>
+                </ul>
+                <button onclick="findNearbyPlaces()">Find More Nearby Places</button>
+            </div>
+        </div>
+    </div>
+
+    <nav>
+        <button>
+            <span class="icon">-</span>
+        </button>
+    </nav>
+</section>
+
+    <script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,119 @@
+body {
+    margin: 0;
+    overflow: hidden;
+    background-image: url("background.png");
+    background-size: cover;
+}
+
+.square-wrapper {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.square {
+    width: 50px;
+    height: 50px;
+    opacity: 0.7;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    font-family: 'Orbitron', sans-serif;
+    text-shadow: 0 0 5px #ff8800, 0 0 10px #ff8800, 0 0 15px #ff8800, 0 0 20px #ff8800;
+}
+
+.square-text {
+    margin-top: 5px;
+    color: #690303;
+    font-size: 14px;
+    font-family: 'Orbitron', sans-serif;
+    /* text-shadow: 0 0 5px #ff8800, 0 0 10px #ff8800, 0 0 15px #ff8800, 0 0 20px #ff8800; */
+}
+
+.square.blue {
+    background-image: url("blue.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.square.green {
+    background-image: url("green.pnh.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.square.orange {
+    background-image: url("orange.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.square.red {
+    background-image: url("red.png");
+    background-size: cover;
+    background-position: center;
+}
+
+.score {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.health {
+    position: absolute;
+    top: 60px;
+    left: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.timer {
+    position: absolute;
+    top: 100px;
+    left: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+}
+
+.input-container {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.wave-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2rem;
+    color: white;
+    background-color: rgba(0, 0, 0, 0.8);
+    padding: 20px;
+    border-radius: 10px;
+    z-index: 1000;
+    text-align: center;
+}
+
+.fade-out {
+    opacity: 0;
+    transition: opacity 1s ease-out;
+}

@@ -1,0 +1,175 @@
+const blueWords = ["cat", "dog", "fish", "bird", "tree"];
+const greenWords = ["planet", "flower", "butterfly", "forest"];
+const orangeWords = ["universe", "mountain", "rainforest", "continent"];
+const redWords = ["phenomenon", "extraterrestrial", "multidimensional", "encyclopedia"];
+
+let score = 0;
+let health = 100;
+
+function getUniqueWord(wordList) {
+    const word = wordList[Math.floor(Math.random() * wordList.length)];
+    return word;
+}
+
+function getRandomSquareType() {
+    const rand = Math.random() * 100;
+    if (rand <= 10) {
+        return 'red';
+    } else if (rand <= 50) {
+        return 'orange';
+    } else if (rand <= 80) {
+        return 'green';
+    } else {
+        return 'blue';
+    }
+}
+
+function updateScore(points) {
+    score = Math.max(0, score + points);
+    document.getElementById("score").innerText = score;
+}
+
+function updateHealth(squareType) {
+    let damage = 0;
+    if (squareType === 'blue') {
+        damage = 1;
+    } else if (squareType === 'green') {
+        damage = 2;
+    } else if (squareType === 'orange') {
+        damage = 4;
+    } else if (squareType === 'red') {
+        damage = 10;
+    }
+    health -= damage;
+    document.getElementById("health").innerText = health;
+    if (health <= 0) {
+        alert("Game Over! Your score: " + score);
+        location.reload();
+    }
+}
+
+function createSquare() {
+    let squareType = getRandomSquareType();
+    let word;
+
+    if (squareType === 'blue') {
+        word = getUniqueWord(blueWords);
+    } else if (squareType === 'green') {
+        word = getUniqueWord(greenWords);
+    } else if (squareType === 'orange') {
+        word = getUniqueWord(orangeWords);
+    } else if (squareType === 'red') {
+        word = getUniqueWord(redWords);
+    }
+
+    const wrapper = document.createElement('div');
+    wrapper.classList.add('square-wrapper');
+
+    const square = document.createElement('div');
+    square.classList.add('square', squareType);
+    wrapper.appendChild(square);
+
+    const squareText = document.createElement('div');
+    squareText.classList.add('square-text');
+    squareText.innerText = word;
+    wrapper.appendChild(squareText);
+
+    square.dataset.word = word;
+
+    const maxWidth = window.innerWidth - 50;
+    const randomX = Math.floor(Math.random() * maxWidth);
+    const randomY = Math.floor(Math.random() * (window.innerHeight / 2 - 50));
+
+    wrapper.style.left = randomX + 'px';
+    wrapper.style.top = randomY + 'px';
+
+    document.body.appendChild(wrapper);
+
+    const interval = setInterval(function() {
+        const wrapperRect = wrapper.getBoundingClientRect();
+        const inputRect = document.getElementById("wordInput").getBoundingClientRect();
+
+        const dx = (inputRect.left + inputRect.width / 2) - (wrapperRect.left + wrapperRect.width / 2);
+        const dy = inputRect.top - (wrapperRect.top + wrapperRect.height);
+        const distance = Math.sqrt(dx * dx + dy * dy);
+
+        const moveX = (dx / distance) * 2;
+        const moveY = (dy / distance) * 2;
+
+        if (distance < 5) {
+            document.body.removeChild(wrapper);
+            updateHealth(squareType);
+            clearInterval(interval);
+        } else {
+            wrapper.style.left = wrapperRect.left + moveX + 'px';
+            wrapper.style.top = wrapperRect.top + moveY + 'px';
+        }
+    }, 20);
+}
+
+function checkInput(event) {
+    const input = document.getElementById("wordInput").value.toLowerCase();
+    const allSquares = document.querySelectorAll('.square-wrapper');
+
+    let wordFound = false;
+
+    allSquares.forEach(wrapper => {
+        const squareText = wrapper.querySelector('.square-text');
+        const word = wrapper.querySelector('.square').dataset.word;
+
+        squareText.style.color = '#ff8800';
+        squareText.innerText = word;
+
+        if (word.startsWith(input)) {
+            const remainingLetters = word.slice(input.length);
+            squareText.style.color = 'purple';
+            squareText.innerText = remainingLetters;
+
+            if (word === input && event.key === "Enter") {
+                wrapper.remove();
+                wordFound = true;
+
+                const squareType = wrapper.querySelector('.square').classList[1];
+                if (squareType === 'blue') {
+                    updateScore(25);
+                } else if (squareType === 'green') {
+                    updateScore(50);
+                } else if (squareType === 'orange') {
+                    updateScore(100);
+                } else if (squareType === 'red') {
+                    updateScore(500);
+                }
+            }
+        }
+    });
+
+    if (!wordFound && event.key === "Enter") {
+        updateScore(-25);
+    }
+
+    if (event.key === "Enter") {
+        document.getElementById("wordInput").value = "";
+    }
+}
+
+function activateAbility() {
+    if (score >= 3000) {
+        updateScore(-3000);
+        const allSquares = document.querySelectorAll('.square-wrapper');
+        allSquares.forEach(wrapper => {
+            wrapper.remove();
+        });
+    }
+}
+
+document.addEventListener('keydown', function(event) {
+    if (event.key === "Tab") {
+        event.preventDefault();
+        activateAbility();
+    }
+});
+
+setInterval(createSquare, 2000);
+
+document.getElementById("wordInput").addEventListener("input", checkInput);
+document.getElementById("wordInput").addEventListener("keydown", checkInput);

@@ -28,4 +28,7 @@ An industrial robot control and monitoring system. TechNav allows real-time trac
 Solar System Explorer:
 Solar System Explorer allows users to explore the planets and other celestial bodies within our solar system. Through an intuitive interface and interactive features, users can view detailed information, compare planetary characteristics, and discover important historical and scientific data about each planet and associated space missions.
 
+EduMate:
+A comprehensive platform that supports efficient learning, offering personalized study plans, interactive discussions, AI-driven responses, and note summarization tools to enhance study organization and productivity.
+
 This portfolio highlights my ability to work across a wide range of fields, from game development to robotics and AI-driven applications.

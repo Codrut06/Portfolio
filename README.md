@@ -31,4 +31,7 @@ Solar System Explorer allows users to explore the planets and other celestial bo
 EduMate:
 A comprehensive platform that supports efficient learning, offering personalized study plans, interactive discussions, AI-driven responses, and note summarization tools to enhance study organization and productivity.
 
+Word Battle:
+A fast-paced typing game where players eliminate colored squares by typing words, with increasing difficulty and health risks based on word complexity.
+
 This portfolio highlights my ability to work across a wide range of fields, from game development to robotics and AI-driven applications.

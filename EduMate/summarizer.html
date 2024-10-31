@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduMate - Notes Summarizer</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-container">
+            <img src="images/logo.jpg" alt="EduMate Logo" class="logo">
+            <h1><span class="welcome">Welcome to</span> <span class="edumate">EduMate</span> <span class="companion">:
+                    Your Learning Companion - Notes Summarizer</span></h1>
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#search">Search Summarizer</a>
+    </nav>
+
+    <section class="content">
+        <p>Create clear and concise summaries of your notes for easier studying.</p>
+
+        <div class="summarizer-container">
+            <h3>Enter Your Notes</h3>
+            <textarea id="notesInput" placeholder="Paste your study notes here..." rows="6"
+                class="notes-input"></textarea>
+
+            <div class="summary-options">
+                <label for="summaryLength">Summary Length:</label>
+                <select id="summaryLength" class="length-select">
+                    <option value="short">Short</option>
+                    <option value="medium">Medium</option>
+                    <option value="detailed">Detailed</option>
+                </select>
+            </div>
+
+            <button onclick="generateSummary()">Generate Summary</button>
+        </div>
+
+        <div id="summaryResult" class="summary-result">
+            <h3>Generated Summary</h3>
+            <p id="summaryText"></p>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+
+    <footer>
+        <p>&copy; 2024 EduMate. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

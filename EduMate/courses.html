@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduMate - Courses</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-container">
+            <img src="images/logo.jpg" alt="EduMate Logo" class="logo">
+            <h1><span class="welcome">Welcome to</span> <span class="edumate">EduMate</span> <span class="companion">:
+                    Your Learning Companion - Courses</span></h1>
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#search">Search Courses</a>
+    </nav>
+
+    <section class="content">
+        <p>Explore and enroll in our online courses.</p>
+        <div class="search-container">
+            <input type="text" placeholder="Search Courses" class="search-input">
+            <button class="search-button" onclick="searchCourses()">Search</button>
+        </div>
+
+        <div id="courseResults" class="section-container"></div>
+    </section>
+
+    <script src="script.js"></script>
+
+    <footer>
+        <p>&copy; 2024 EduMate. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduMate - Roadmap Generator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-container">
+            <img src="images/logo.jpg" alt="EduMate Logo" class="logo">
+            <h1><span class="welcome">Welcome to</span> <span class="edumate">EduMate</span> <span class="companion">:
+                    Your Learning Companion - Roadmap Generator</span></h1>
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#search">Search Roadmaps</a>
+    </nav>
+
+    <section class="content">
+        <p>Generate a roadmap to meet your learning goals.</p>
+
+        <div class="form-container">
+            <input type="text" id="learningGoals" placeholder="Enter your learning goals" class="input-field">
+            <input type="text" id="timeAvailable" placeholder="Enter time available (hours/week)" class="input-field">
+            <input type="text" id="interests" placeholder="Enter areas of interest" class="input-field">
+            <button class="generate-button" onclick="generateRoadmap()">Generate Roadmap</button>
+        </div>
+
+        <div id="roadmapResults" class="section-container"></div>
+    </section>
+
+    <script src="script.js"></script>
+
+    <footer>
+        <p>&copy; 2024 EduMate. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

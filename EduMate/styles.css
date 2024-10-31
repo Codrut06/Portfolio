@@ -1,0 +1,391 @@
+/* ==================== BODY ==================== */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #0066cc, #4CAF50);
+    color: #fff;
+}
+
+/* ==================== HEADER ==================== */
+header {
+    background: linear-gradient(135deg, #0066cc, #4CAF50);
+    padding: 20px 0;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.header-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.intro-message {
+    font-size: 14px;
+    color: #e0e0e0;
+    font-style: italic;
+    margin-top: 5px;
+}
+
+.logo {
+    width: 80px;
+    height: auto;
+    margin-right: 25px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.welcome {
+    font-size: 28px;
+    color: #e0e0e0;
+    letter-spacing: 1px;
+}
+
+.edumate {
+    font-size: 48px;
+    font-weight: bold;
+    color: #4CAF50;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+    transition: color 0.3s ease-in-out;
+}
+
+.edumate:hover {
+    color: #34a853;
+}
+
+.companion {
+    font-size: 28px;
+    color: #e0e0e0;
+    font-style: italic;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* ==================== NAVIGATION ==================== */
+nav {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+}
+
+nav a {
+    color: #fff;
+    text-decoration: none;
+    margin: 0 10px;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+nav a::before {
+    content: "\1F4DA";
+    margin-right: 5px;
+}
+
+/* ==================== SECTION CONTAINERS ==================== */
+.section-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    background: linear-gradient(135deg, #0073e6, #66bb6a);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+}
+
+.section {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    text-align: center;
+    padding: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.section img {
+    margin-bottom: 5px;
+}
+
+.section p {
+    margin: 5px 0;
+}
+
+.try-now-button {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    font-size: 14px;
+    margin: 5px 0;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.try-now-button:hover {
+    background-color: #45a049;
+}
+
+/* ==================== SEARCH ==================== */
+.search-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.search-input {
+    width: 60%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    height: 30px;
+    box-sizing: border-box;
+}
+
+.search-button {
+    background-color: #007BFF;
+    border: none;
+    color: white;
+    padding: 0 15px;
+    font-size: 14px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    height: 30px;
+    line-height: 30px;
+    box-sizing: border-box;
+}
+
+.search-button:hover {
+    background-color: #0056b3;
+}
+
+/* ==================== COURSE ITEM ==================== */
+.course-item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+}
+
+.course-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ==================== FOOTER ==================== */
+footer {
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 14px;
+    margin-top: 20px;
+}
+
+footer p {
+    margin: 0;
+}
+
+.study-plan-item, .voice-interaction-container, .summarizer-container {
+    background-color: rgba(240, 255, 250, 0.9);
+    border: 1px solid #0056b3;
+}
+
+/* ==================== STUDY PLAN ITEM ==================== */
+.study-plan-item {
+    border: 1px solid #ccc;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.study-plan-item h3 {
+    margin: 0 0 10px;
+}
+
+/* ==================== ROADMAP GENERATOR FORM ==================== */
+.content .form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px 0;
+}
+
+.content .input-field {
+    width: 80%;
+    padding: 12px;
+    margin: 10px 0;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    font-size: 16px;
+    transition: border-color 0.3s;
+}
+
+.content .input-field:focus {
+    border-color: #0056b3;
+    outline: none;
+}
+
+.content .generate-button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.content .generate-button:hover {
+    background-color: #0056b3;
+}
+
+/* ==================== ROADMAP GENERATOR RESULTS ==================== */
+.content .section-container {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* ==================== CHAT SECTION ==================== */
+.content .group-chat-container,
+.content .private-chat-container {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #0056b3;
+}
+
+
+
+.chat-box {
+    height: 300px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+.chat-message {
+    margin-bottom: 5px;
+}
+
+.chat-input {
+    width: 80%;
+    padding: 10px;
+    margin-right: 5px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+/* ==================== BUTTONS ==================== */
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* ==================== VOICE INTERACTION ==================== */
+.voice-interaction-container {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.question-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.response-container {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #28a745;
+    border-radius: 5px;
+    background-color: #e9f7ef;
+}
+
+.response-text {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* ==================== NOTES SUMMARIZER ==================== */
+.summarizer-container {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #007bff;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.notes-input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+    font-size: 16px;
+    resize: vertical;
+}
+
+.summary-options {
+    margin: 10px 0;
+}
+
+.length-select {
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid #007bff;
+    font-size: 16px;
+}
+
+.summary-result {
+    margin-top: 20px;
+    padding: 15px;
+    border: 1px solid #28a745;
+    border-radius: 5px;
+    background-color: #e9f7ef;
+}
+
+.summary-result h3 {
+    margin-bottom: 10px;
+}
+
+.summary-result p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+/* ==================== MEDIA QUERIES ==================== */
+@media (max-width: 768px) {
+    .section-container {
+        grid-template-columns: 1fr;
+    }
+    .search-input {
+        width: 100%;
+    }
+}

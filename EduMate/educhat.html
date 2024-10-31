@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduMate - EduChat</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-container">
+            <img src="images/logo.jpg" alt="EduMate Logo" class="logo">
+            <h1><span class="welcome">Welcome to</span> <span class="edumate">EduMate</span> <span class="companion">:
+                    Your Learning Companion - EduChat</span></h1>
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#search">Search Chats</a>
+    </nav>
+
+    <section class="content">
+        <p>Engage in discussions and seek guidance with EduChat.</p>
+
+        <!-- Secțiune pentru chat-uri de grup -->
+        <div class="group-chat-container">
+            <h3>Group Chat</h3>
+            <div id="groupChat" class="chat-box"></div>
+            <input type="text" id="groupChatInput" placeholder="Type your message..." class="chat-input">
+            <button onclick="sendGroupMessage()">Send</button>
+        </div>
+
+        <!-- Secțiune pentru chat privat -->
+        <div class="private-chat-container">
+            <h3>Private Chat</h3>
+            <div id="privateChat" class="chat-box"></div>
+            <input type="text" id="privateChatInput" placeholder="Type your message..." class="chat-input">
+            <button onclick="sendPrivateMessage()">Send</button>
+        </div>
+
+        <h3>Search Chats</h3>
+        <div class="search-container">
+            <input type="text" placeholder="Search Chats" class="search-input">
+            <button class="search-button" onclick="searchFunction('chat')">Search</button>
+        </div>
+
+        <div id="chatResults" class="section-container"></div>
+    </section>
+
+    <script src="script.js"></script>
+
+    <footer>
+        <p>&copy; 2024 EduMate. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

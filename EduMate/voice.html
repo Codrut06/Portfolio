@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduMate - AI Teacher Voice</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-container">
+            <img src="images/logo.jpg" alt="EduMate Logo" class="logo">
+            <h1><span class="welcome">Welcome to</span> <span class="edumate">EduMate</span> <span class="companion">:
+                    Your Learning Companion - AI Teacher Voice</span></h1>
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#search">Search AI Teacher</a>
+    </nav>
+
+    <section class="content">
+        <p>Interact with our AI teacher via voice call for personalized guidance.</p>
+
+        <div class="voice-interaction-container">
+            <h3>Ask Your Question</h3>
+            <textarea id="userQuestion" placeholder="Type your question here..." rows="4"
+                class="question-input"></textarea>
+            <button onclick="startVoiceCall()">Ask AI Teacher</button>
+        </div>
+
+        <div id="aiResponse" class="response-container">
+            <h3>AI Response</h3>
+            <div id="responseText" class="response-text"></div>
+        </div>
+
+        <h3>Search AI Teacher</h3>
+        <div class="search-container">
+            <input type="text" placeholder="Search AI Teacher" class="search-input">
+            <button class="search-button" onclick="searchFunction('voice')">Search</button>
+        </div>
+
+        <div id="voiceResults" class="section-container"></div>
+    </section>
+
+    <script src="script.js"></script>
+
+    <footer>
+        <p>&copy; 2024 EduMate. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduMate - Study Planner</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+    <header>
+        <div class="header-container">
+            <img src="images/logo.jpg" alt="EduMate Logo" class="logo">
+            <h1><span class="welcome">Welcome to</span> <span class="edumate">EduMate</span> <span class="companion">:
+                    Your Learning Companion - Study Planner</span></h1>
+        </div>
+    </header>
+
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="#search">Search Study Plans</a>
+    </nav>
+
+    <section class="content">
+        <p>Plan your study sessions with our comprehensive study planner.</p>
+
+        <!-- Formular pentru adăugarea sesiunilor de studiu -->
+        <div class="form-container">
+            <input type="text" placeholder="Session Title" class="input-field" id="sessionTitle">
+            <input type="datetime-local" class="input-field" id="sessionDate">
+            <button class="add-button" onclick="addStudySession()">Add Session</button>
+        </div>
+
+        <h3>Your Scheduled Sessions</h3>
+        <div id="sessionResults" class="section-container"></div>
+
+        <h3>Search Study Plans</h3>
+        <div class="search-container">
+            <input type="text" placeholder="Search Study Plans" class="search-input">
+            <button class="search-button" onclick="searchStudyPlans()">Search</button>
+        </div>
+
+        <div id="plannerResults" class="section-container"></div>
+    </section>
+
+    <script src="script.js"></script>
+
+    <footer>
+        <p>&copy; 2024 EduMate. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

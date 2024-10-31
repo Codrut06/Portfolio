@@ -34,4 +34,7 @@ A comprehensive platform that supports efficient learning, offering personalized
 Word Battle:
 A fast-paced typing game where players eliminate colored squares by typing words, with increasing difficulty and health risks based on word complexity.
 
+Simple Weather App:
+An intuitive interface for weather forecasts and personalized recommendations, featuring a digital clock, detailed conditions, and activity suggestions based on atmospheric conditions.
+
 This portfolio highlights my ability to work across a wide range of fields, from game development to robotics and AI-driven applications.
